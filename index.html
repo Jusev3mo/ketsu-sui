@@ -167,6 +167,45 @@ footer .motto em{font-style:normal;color:var(--sakura)}
 footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
 .seal{width:44px;height:44px;margin:0 auto 22px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:1.3rem}
 
+/* statements & quotes */
+.statement{padding:120px 0;text-align:center}
+.statement .big{font-size:clamp(2rem,8.5vw,4.2rem);font-weight:750;letter-spacing:-.035em;line-height:1.08;max-width:900px;margin:0 auto}
+.statement .big span{display:block}
+.statement .big .soft{color:var(--muted)}
+.dark.statement .big .soft{color:#6f7b98}
+.statement .big .pink{color:var(--sakura)}
+.statement .by{margin-top:22px;font-size:.9rem;color:var(--muted)}
+.dark .by{color:var(--on-dark-muted)}
+.story-text{max-width:680px;margin:28px auto 0;font-size:1.08rem;color:var(--muted)}
+.motto-line{margin-top:36px;font-size:1.15rem;font-weight:600}
+.motto-line em{font-style:normal;color:var(--sakura)}
+blockquote.pull{max-width:760px;margin:48px auto 0;font-size:clamp(1.25rem,4.6vw,1.7rem);font-weight:600;letter-spacing:-.02em;line-height:1.3;text-align:center}
+blockquote.pull cite{display:block;margin-top:12px;font-size:.85rem;font-style:normal;font-weight:500;color:var(--on-dark-muted);letter-spacing:0}
+.how{margin-top:14px;padding-top:14px;border-top:1px solid rgba(20,33,61,.1);font-size:.92rem}
+.how b{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.card .how{color:var(--ink)}
+@media (min-width:760px){.g3{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:560px) and (max-width:759px){.g3{grid-template-columns:repeat(2,1fr)}}
+.compare{display:grid;gap:16px;margin-top:44px}
+@media (min-width:700px){.compare{grid-template-columns:1fr 1fr}}
+.compare .card h3{font-size:1.35rem}
+.compare .them{background:transparent;box-shadow:inset 0 0 0 1.5px rgba(20,33,61,.15)}
+.compare .us{background:var(--indigo);color:var(--on-dark)}
+.compare .us p{color:var(--on-dark-muted)}
+.compare .label-s{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;display:block;color:var(--muted)}
+.compare .us .label-s{color:var(--sakura)}
+.role{font-size:.8rem!important;color:var(--gold)!important;font-weight:600;margin-top:10px}
+
+/* FAQ */
+.faq{max-width:760px;margin:40px auto 0}
+.faq details{border-bottom:1px solid rgba(20,33,61,.12)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-weight:650;font-size:1.06rem;letter-spacing:-.01em;position:relative;line-height:1.35}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:12px;height:12px;border-right:2px solid var(--indigo);border-bottom:2px solid var(--indigo);transform:translateY(-70%) rotate(45deg);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq details p{padding:0 8px 24px 0;color:var(--muted)}
+.faq .qn{color:var(--gold);margin-right:10px;font-variant-numeric:tabular-nums}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -191,6 +230,7 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
       <li><a href="#values">Values</a></li>
       <li><a href="#colombia">Colombia</a></li>
       <li><a href="#team">Team</a></li>
+      <li><a href="#faq">Q&amp;A</a></li>
     </ul>
     <a class="cta" href="#quiz">Quiz</a>
   </div>
@@ -220,25 +260,37 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
   <div class="wrap">
     <p class="eyebrow reveal">The problem</p>
     <h2 class="reveal">We live in a world that confuses new with better.</h2>
-    <p class="lead reveal d1">Every year, millions of devices that still work are thrown away, just because a newer model came out. The price we see at the store is only part of the story. Every device carries hidden costs.</p>
+    <p class="lead reveal d1">Today, the world lives in a cycle of constant consumption. We are encouraged to buy new devices every year, even when the ones we have still work perfectly. Millions of working phones, computers and gadgets are thrown away just because a newer model has appeared. This culture of <strong style="color:var(--washi)">"buy, use, discard"</strong> is not just expensive. It is unsustainable.</p>
+    <p class="lead reveal d2" style="margin-top:16px">Every new device carries a cost that is hidden, but real.</p>
     <div class="grid g4">
       <article class="card reveal">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l9-16 9 16z"/><path d="M8 21l4-7 4 7"/></svg></div>
-        <h3>Mining</h3><p>Rare metals are pulled from the earth, damaging land, water and communities.</p>
+        <h3>Mining</h3><p>Minerals found in only a few places in the world are extracted, destroying ecosystems and poisoning waterways.</p>
       </article>
       <article class="card reveal d1">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l6 4V10l6 4V6h6v15z"/></svg></div>
-        <h3>Manufacturing</h3><p>Factories use huge amounts of energy and water to build every new device.</p>
+        <h3>Manufacturing</h3><p>Factories burn energy to produce new units, creating pollution and far too much carbon.</p>
       </article>
       <article class="card reveal d2">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h11v9H2zM13 10h5l3 3v3h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div>
-        <h3>Transport</h3><p>Parts and products travel across the world by ship, plane and truck.</p>
+        <h3>Transport</h3><p>Moving parts and products across the world adds to our footprint.</p>
       </article>
       <article class="card reveal d3">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14"/></svg></div>
-        <h3>Disposal</h3><p>Electronic waste often ends up in landfills, releasing toxic materials.</p>
+        <h3>Disposal</h3><p>Functional devices end up in landfills as toxic waste that may never decompose.</p>
       </article>
     </div>
+    <blockquote class="pull reveal">Better to keep and improve than to throw away and replace.</blockquote>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="statement" id="story">
+  <div class="wrap">
+    <p class="eyebrow reveal">Our story</p>
+    <p class="big reveal"><span>Progress does not</span><span class="pink">require waste.</span></p>
+    <p class="story-text reveal d1">Our founders started Ketsu-sui in Tokyo. They were working as engineers for a big electronics brand, and every year they watched perfectly good devices being thrown away. One day, they decided to do something different: design devices that last for years, not just seasons.</p>
+    <p class="motto-line reveal d2">We don't want you to buy less. <em>We want you to value more.</em></p>
   </div>
 </section>
 
@@ -249,7 +301,7 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
       <div>
         <p class="eyebrow reveal">Our solution</p>
         <h2 class="reveal">Long-Life Technology.</h2>
-        <p class="lead reveal d1">Ketsu-sui devices are modular and repairable. When one part gets old or breaks, you change that part, not the whole device.</p>
+        <p class="lead reveal d1">Instead of sealed, disposable products, Ketsu-sui devices are modular and repairable. When one part gets old or breaks, you change that part, not the whole device. This respects natural resources, reduces waste and gives people better value for their money.</p>
       </div>
       <div class="phone-stage reveal" id="phone">
         <svg viewBox="-110 -20 420 470" role="img" aria-label="A modular phone separating into its camera, memory and battery modules">
@@ -291,20 +343,34 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
       </div>
     </div>
 
-    <div class="grid g4">
+    <div class="grid g3">
       <article class="card reveal">
-        <span class="num">01</span><h3>Easy repair</h3><p>Most repairs are done in less than an hour, with simple tools and clear guides.</p>
+        <span class="num">01</span><h3>Easy repair</h3><p>Affordable repair services. Customers can have their phones repaired in less than an hour.</p>
       </article>
       <article class="card reveal d1">
-        <span class="num">02</span><h3>Affordable upgrades</h3><p>Change the battery, camera or memory without buying a new device.</p>
+        <span class="num">02</span><h3>Affordable upgrades</h3><p>Upgrade the battery, camera or memory without buying a whole new device.</p>
       </article>
       <article class="card reveal d2">
-        <span class="num">03</span><h3>Multi-year software updates</h3><p>Your device keeps getting security and feature updates for years.</p>
+        <span class="num">03</span><h3>Multi-year software updates</h3><p>Your device keeps getting updates for years, so it stays useful and secure.</p>
       </article>
-      <article class="card reveal d3">
-        <span class="num">04</span><h3>Trade-in program</h3><p>Old devices are repaired and get a second life with a new owner.</p>
+      <article class="card reveal">
+        <span class="num">04</span><h3>Trade-in program</h3><p>Old units are collected, repaired and given a second life, keeping valuable materials out of landfills.</p>
+      </article>
+      <article class="card reveal d1">
+        <span class="num">05</span><h3>Safe &amp; private</h3><p>Every refurbished unit is checked carefully, and all personal data is deleted before the device is reused.</p>
+      </article>
+      <article class="card reveal d2">
+        <span class="num">06</span><h3>Learn to fix it</h3><p>We share tutorials online, so people can find out how to fix small problems themselves.</p>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- SLOGAN -->
+<section class="statement paper2">
+  <div class="wrap">
+    <p class="big"><span class="reveal">Keep what you have.</span><span class="reveal d1 soft">Make it better.</span><span class="reveal d2 pink">Value it longer.</span></p>
+    <p class="by reveal d3">Many people feel embarrassed when their phone is old, because advertising makes older models look boring. We want to change that.</p>
   </div>
 </section>
 
@@ -314,28 +380,32 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
     <div class="center">
       <p class="eyebrow reveal">Japanese values</p>
       <h2 class="reveal">Inspired by old ideas.<br>Built for the future.</h2>
-      <p class="lead reveal d1">Our way of working comes from Japanese traditions that respect objects, people and nature.</p>
+      <p class="lead reveal d1">Ketsu-sui is not just about technology. It is built on centuries of Japanese wisdom: value what you have, improve what exists, and respect the resources entrusted to us.</p>
     </div>
     <div class="grid g4">
       <article class="card value reveal">
         <span class="kanji small jp" lang="ja">もったいない</span>
         <h3>Mottainai</h3><span class="romaji">Waste nothing</span>
-        <p>The feeling of regret when something useful is wasted.</p>
+        <p>A feeling of regret when something useful is wasted, and deep respect for things that still have value.</p>
+        <p class="how"><b>How it guides us</b>We design products that are repaired and reused. Nothing is discarded unnecessarily.</p>
       </article>
       <article class="card value reveal d1">
         <span class="kanji jp" lang="ja">改善</span>
         <h3>Kaizen</h3><span class="romaji">Always better</span>
-        <p>Continuous improvement, one small step at a time.</p>
+        <p>Continuous improvement: making things better without starting over.</p>
+        <p class="how"><b>How it guides us</b>We offer upgrades and improvements. You don't need to replace everything to have the best.</p>
       </article>
       <article class="card value reveal d2">
         <span class="kanji small jp" lang="ja">ものづくり</span>
         <h3>Monozukuri</h3><span class="romaji">Craft</span>
-        <p>The art of making things well, with care and pride.</p>
+        <p>The art of making things with excellence and pride: quality over quantity.</p>
+        <p class="how"><b>How it guides us</b>We build with premium materials so our products last for generations.</p>
       </article>
       <article class="card value reveal d3">
         <span class="kanji jp" lang="ja">和</span>
         <h3>Wa</h3><span class="romaji">Harmony</span>
-        <p>Harmony between people and nature.</p>
+        <p>Harmony and balance between people, nature and our possessions.</p>
+        <p class="how"><b>How it guides us</b>Our technology improves life without harming the shared environment.</p>
       </article>
     </div>
     <div class="grid g2">
@@ -346,7 +416,7 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
         </svg>
         <span class="tag">Kintsugi · 金継ぎ</span>
         <h3>Broken, then more beautiful.</h3>
-        <p>In kintsugi, a broken bowl is repaired with gold. The cracks are not hidden; they become part of its story. We see repair the same way: not as a failure, but as something valuable.</p>
+        <p>In Japan, we do not discard a bowl just because it has a small chip. We may even repair it with gold, making it more beautiful because it has been cared for. We see repair the same way: not as a failure, but as something valuable.</p>
       </article>
       <article class="card story reveal d1">
         <svg class="bowl" viewBox="0 0 100 60" aria-hidden="true">
@@ -356,9 +426,10 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
         </svg>
         <span class="tag">Hari-Kuyō · 針供養</span>
         <h3>A thank-you for broken needles.</h3>
-        <p>During the Hari-Kuyō festival, people take their broken sewing needles to temples to thank them for their service. It shows respect for the tools that help us every day.</p>
+        <p>Even today, during the Hari-Kuyō festival, people take their old, broken sewing needles to temples and shrines to thank them for their service. That is what we offer the world: to care for our technology rather than abandon it.</p>
       </article>
     </div>
+    <p class="motto-line center reveal" style="margin-top:48px">You do not need to tear down a house to improve a room.</p>
   </div>
 </section>
 
@@ -367,7 +438,7 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
   <div class="wrap">
     <p class="eyebrow reveal">Coming to Colombia</p>
     <h2 class="reveal">From Japan to Colombia.</h2>
-    <p class="lead reveal d1">We are opening repair and trade-in centers in three Colombian cities, so people can keep their devices working for longer.</p>
+    <p class="lead reveal d1">Next year we are opening Ketsu-sui repair and trade-in centers in three Colombian cities, so people can keep their devices working for longer.</p>
     <div class="cities">
       <div class="city reveal"><div class="pin"></div><h3>Bogotá</h3><p>Repair &amp; trade-in center</p></div>
       <div class="city reveal d1"><div class="pin"></div><h3>Medellín</h3><p>Repair &amp; trade-in center</p></div>
@@ -376,8 +447,33 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
     <div class="benefits">
       <div class="benefit reveal"><span class="check" aria-hidden="true">✓</span><div><b>Local jobs</b><span>Our centers are run by people from each city.</span></div></div>
       <div class="benefit reveal d1"><span class="check" aria-hidden="true">✓</span><div><b>Training young technicians</b><span>We teach repair skills to young people.</span></div></div>
-      <div class="benefit reveal d2"><span class="check" aria-hidden="true">✓</span><div><b>Less e-waste</b><span>Fewer devices end up in the trash.</span></div></div>
+      <div class="benefit reveal d2"><span class="check" aria-hidden="true">✓</span><div><b>Less e-waste</b><span>Fewer devices end up in local landfills.</span></div></div>
     </div>
+    <blockquote class="pull reveal">"Welcome to technology that stays with you."<cite>Luis Angel, CEO</cite></blockquote>
+  </div>
+</section>
+
+<!-- DIFFERENT / ETHICS -->
+<section id="different">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow reveal">Why we are different</p>
+      <h2 class="reveal">Less waste.<br>More value.</h2>
+      <p class="lead reveal d1">This isn't just an environmental choice. It is an ethical one. We have no right to use up our planet's resources for convenience today, leaving future generations with nothing.</p>
+    </div>
+    <div class="compare">
+      <article class="card them reveal">
+        <span class="label-s">Most companies</span>
+        <h3>Profit when you buy new.</h3>
+        <p>"Buy new, upgrade often, keep up." Success is measured by how many devices they sell.</p>
+      </article>
+      <article class="card us reveal d1">
+        <span class="label-s">Ketsu-sui</span>
+        <h3>Profit when your device lasts.</h3>
+        <p>We profit when you get the most life from the products you already own. Our success is measured by how long our devices last.</p>
+      </article>
+    </div>
+    <p class="motto-line center reveal" style="margin-top:48px">The more we repair, <em>the less we waste.</em></p>
   </div>
 </section>
 
@@ -389,10 +485,10 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
       <h2 class="reveal">The people behind Ketsu-sui.</h2>
     </div>
     <div class="grid g4">
-      <article class="card member reveal"><div class="avatar" aria-hidden="true">LA</div><h3>Luis Angel</h3><p>CEO, Business Director</p></article>
-      <article class="card member reveal d1"><div class="avatar" aria-hidden="true">D</div><h3>Dayanis</h3><p>Marketing &amp; Communication Manager</p></article>
-      <article class="card member reveal d2"><div class="avatar" aria-hidden="true">MJ</div><h3>Maria Jose</h3><p>Sustainability Officer</p></article>
-      <article class="card member reveal d3"><div class="avatar" aria-hidden="true">JS</div><h3>Juan Sebastián</h3><p>Cultural Representative</p></article>
+      <article class="card member reveal"><div class="avatar" aria-hidden="true">LA</div><h3>Luis Angel</h3><p>CEO, Business Director</p><p class="role">Company vision and leadership</p></article>
+      <article class="card member reveal d1"><div class="avatar" aria-hidden="true">D</div><h3>Dayanis</h3><p>Marketing &amp; Communication Manager</p><p class="role">Branding, promotion and networking</p></article>
+      <article class="card member reveal d2"><div class="avatar" aria-hidden="true">MJ</div><h3>Maria Jose</h3><p>Sustainability Officer</p><p class="role">Environmental impact and ethical responsibility</p></article>
+      <article class="card member reveal d3"><div class="avatar" aria-hidden="true">JS</div><h3>Juan Sebastián</h3><p>Cultural Representative</p><p class="role">How Japanese culture shapes the company</p></article>
     </div>
   </div>
 </section>
@@ -427,12 +523,32 @@ footer .small{font-size:.78rem;opacity:.75;margin-top:8px}
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow reveal">Questions &amp; answers</p>
+      <h2 class="reveal">Ask Ketsu-sui.</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary><span class="qn">01</span>Why is your proposal ethically responsible?</summary><p>Because it respects our planet's limited resources and offers people an affordable alternative: you don't need to spend more money to have good technology. It creates a fairer relationship between people and the products we use.</p></details>
+      <details><summary><span class="qn">02</span>How does Japanese culture influence your project?</summary><p>Our entire philosophy comes from Japanese values: Mottainai, respect for what we have; Monozukuri, pride in quality; and Kaizen, continuous improvement without waste. Our culture doesn't just inspire the project, it is the project.</p></details>
+      <details><summary><span class="qn">03</span>What makes your company different from competitors?</summary><p>Most companies profit when you buy new products. We profit when you get the most life from the products you already own. Our success is measured by how long our devices last, not by how many we sell.</p></details>
+      <details><summary><span class="qn">04</span>What challenges would your business face internationally?</summary><p>It might be difficult to convince consumers who are used to buying a new phone every year, and we will have to compete with big brands that profit from fast replacement. That is why education and marketing are as important for us as engineering.</p></details>
+      <details><summary><span class="qn">05</span>How realistic is your proposal economically?</summary><p>Extending product life reduces costs for consumers and businesses. Repair and refurbishment create local jobs. Less waste means lower environmental cleanup costs. In the long term, durability is not just ethical, it is smarter economics.</p></details>
+      <details><summary><span class="qn">06</span>How would your company impact local communities?</summary><p>In Colombia, new technical jobs will be created in our repair centers, young technicians will be trained, and less electronic waste will end up in local landfills.</p></details>
+      <details><summary><span class="qn">07</span>What ethical risks could your proposal create?</summary><p>Refurbished devices must be safe, and old devices may contain personal data. That is why every refurbished unit is checked carefully, and all personal data is deleted before the device is reused.</p></details>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
   <div class="wrap">
     <div class="seal jp" aria-hidden="true">和</div>
     <p class="motto"><em>Mottainai:</em> don't waste what still serves you.</p>
+    <p style="margin-bottom:22px">Value isn't about having the newest thing. It's about having something that truly lasts.</p>
     <p>Global Ethical Business Summit · Grown Ups 7 · 2026</p>
     <p class="small">A fictional company created for a class project.</p>
   </div>
