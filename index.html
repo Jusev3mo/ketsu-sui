@@ -251,30 +251,6 @@ blockquote.pull cite{display:block;margin-top:12px;font-family:var(--body);font-
 .avatar img{position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--paper)}
 .member .role{font-size:.74rem;color:var(--sakura-d);font-weight:600;margin-top:8px}
 
-/* QUIZ */
-.quiz{position:relative;max-width:620px;margin:40px auto 0;background:var(--paper);color:var(--ink);border-radius:28px;padding:26px 20px;box-shadow:0 40px 70px -30px rgba(0,0,0,.6);overflow:hidden}
-@media (min-width:600px){.quiz{padding:40px}}
-.q-meta{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);font-weight:600;margin-bottom:10px}
-.bar{height:8px;border-radius:99px;background:var(--washi-2);overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--indigo),var(--sakura),var(--gold));border-radius:inherit;transition:width .6s var(--spring)}
-.q-text{font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,5.4vw,1.75rem);line-height:1.25;margin:26px 0 22px;min-height:3.2em}
-.q-text.swap{animation:swap .5s var(--ease)}
-.q-btns{display:grid;gap:10px}
-@media (min-width:480px){.q-btns{grid-template-columns:1fr 1fr}}
-.q-btn{min-height:58px;border-radius:16px;border:1.5px solid rgba(20,33,61,.16);background:#fff;font-weight:600;font-size:1rem;cursor:pointer;transition:all .3s var(--spring);padding:0 14px}
-.q-btn:hover:not(:disabled){border-color:var(--indigo);transform:translateY(-2px)}
-.q-btn:disabled{cursor:default}
-.q-btn.right{background:var(--indigo);border-color:var(--indigo);color:var(--washi);transform:scale(1.03)}
-.q-btn.wrong{background:#fbe7ed;border-color:var(--sakura);color:#8a3a52;animation:shake .4s}
-@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-.feedback{margin-top:18px;padding:16px 18px;border-radius:16px;background:var(--washi)}
-.feedback strong{display:block;margin-bottom:4px}
-.feedback p{color:var(--muted);font-size:.95rem}
-.next{margin-top:16px;width:100%}
-.result{text-align:center}
-.score{font-family:var(--display);font-size:5rem;font-weight:800;line-height:1;margin:10px 0}
-.score small{font-size:1.6rem;color:var(--muted)}
-#confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 
 /* FAQ */
 .faq{max-width:760px;margin:36px auto 0}
@@ -332,7 +308,6 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
 #values .wrap{position:relative;z-index:1}
 .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:rip .65s var(--ease) forwards;pointer-events:none}
 @keyframes rip{to{transform:scale(4);opacity:0}}
-.q-btn{position:relative;overflow:hidden}
 .city{transition:transform .45s var(--spring),box-shadow .3s}
 .city:hover{transform:translateX(6px);box-shadow:inset 0 0 0 1px var(--sakura)}
 .flip .front .k{transition:transform .6s var(--spring)}
@@ -375,7 +350,7 @@ footer .motto em{display:inline-block;animation:glowPink 3s ease-in-out infinite
       <li><a href="#team">Team</a></li>
       <li><a href="#faq">Q&amp;A</a></li>
     </ul>
-    <a class="cta" href="#quiz">Play the quiz</a>
+    <a class="cta" href="#team">Meet the team</a>
   </div>
 </nav>
 
@@ -395,7 +370,7 @@ footer .motto em{display:inline-block;animation:glowPink 3s ease-in-out infinite
     <p class="lead">Japanese devices built to last for years, not seasons.</p>
     <div class="btns">
       <a class="btn btn-primary" href="#solution">Discover how</a>
-      <a class="btn btn-ghost" href="#quiz">Repair or replace?</a>
+      <a class="btn btn-ghost" href="#values">Our values</a>
     </div>
   </div>
   <span class="scroll-hint" aria-hidden="true"></span>
@@ -634,39 +609,6 @@ footer .motto em{display:inline-block;animation:glowPink 3s ease-in-out infinite
   </div>
 </section>
 
-<!-- QUIZ -->
-<section id="quiz" class="dark">
-  <div class="wave" style="--wc:var(--washi-2)" aria-hidden="true"><i></i><i></i></div>
-  <div class="wrap">
-    <div class="center">
-      <p class="eyebrow reveal">Quiz</p>
-      <h2 class="reveal">Repair or <span class="pink">Replace?</span></h2>
-      <p class="lead reveal d1">Five everyday situations. What would you do?</p>
-    </div>
-    <div class="quiz reveal" aria-live="polite">
-      <canvas id="confetti" aria-hidden="true"></canvas>
-      <div id="q-play">
-        <div class="q-meta"><span id="q-count">Question 1 of 5</span><span id="q-score">Score: 0</span></div>
-        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="q-bar"><i></i></div>
-        <p class="q-text" id="q-text"></p>
-        <div class="q-btns">
-          <button class="q-btn" id="q-keep" data-a="keep">Repair / Upgrade</button>
-          <button class="q-btn" id="q-replace" data-a="replace">Replace</button>
-        </div>
-        <div class="feedback" id="q-fb" hidden><strong id="q-fb-title"></strong><p id="q-fb-text"></p></div>
-        <button class="btn btn-primary next" id="q-next" hidden>Next</button>
-      </div>
-      <div class="result" id="q-result" hidden>
-        <p class="eyebrow" style="margin:0">Your score</p>
-        <p class="score"><span id="q-final">0</span><small>/5</small></p>
-        <p class="lead" id="q-msg" style="margin:0 auto 24px"></p>
-        <button class="btn btn-primary" id="q-again">Try again</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
 <section id="faq">
   <div class="wrap">
     <div class="center">
@@ -877,44 +819,6 @@ footer .motto em{display:inline-block;animation:glowPink 3s ease-in-out infinite
     }).observe(foot);
   }
 
-  /* quiz */
-  var Q = [
-    {t:"Your phone's battery now lasts only half a day.", a:"keep", ok:"Repair it!", why:"The battery is the easiest part to change. Your phone will feel new again."},
-    {t:"Your laptop feels slow after 3 years.", a:"keep", ok:"Upgrade it!", why:"More memory can give it years of extra life, for much less money."},
-    {t:"A new model just came out with a better camera.", a:"keep", ok:"Keep it, or upgrade the camera!", why:"New is not always better. Change only the camera module."},
-    {t:"Your phone screen has a small crack.", a:"keep", ok:"Repair it!", why:"A screen is replaced quickly. Like kintsugi, a repaired object still has value."},
-    {t:"Your tablet is completely destroyed and cannot be fixed.", a:"replace", ok:"Replace it, with trade-in!", why:"Sometimes replacing is right. Trade it in so its materials are used again."}
-  ];
-  var i=0, score=0, btns=document.querySelectorAll('.q-btn');
-  function setBar(n){ $('q-bar').firstElementChild.style.width=(n/Q.length*100)+'%'; $('q-bar').setAttribute('aria-valuenow',n); }
-  function render(){
-    var q=Q[i], qt=$('q-text');
-    $('q-count').textContent='Question '+(i+1)+' of '+Q.length;
-    $('q-score').textContent='Score: '+score;
-    qt.textContent=q.t; qt.classList.remove('swap'); void qt.offsetWidth; qt.classList.add('swap');
-    $('q-fb').hidden=true; $('q-next').hidden=true;
-    btns.forEach(function(b){ b.disabled=false; b.classList.remove('right','wrong'); });
-    setBar(i);
-  }
-  btns.forEach(function(b){ b.addEventListener('click', function(){
-    var q=Q[i], ok=b.dataset.a===q.a; if(ok) score++; try{ if(navigator.vibrate) navigator.vibrate(ok?30:[40,60,40]); }catch(e){}
-    btns.forEach(function(x){ x.disabled=true; if(x.dataset.a===q.a) x.classList.add('right'); });
-    if(!ok) b.classList.add('wrong');
-    $('q-fb-title').textContent=(ok?'Correct! ':'Not quite. ')+q.ok;
-    $('q-fb-text').textContent=q.why;
-    var fb=$('q-fb'); fb.hidden=false; fb.classList.remove('swap'); void fb.offsetWidth; fb.classList.add('swap');
-    $('q-score').textContent='Score: '+score; setBar(i+1);
-    $('q-next').textContent = i===Q.length-1 ? 'See my score' : 'Next'; $('q-next').hidden=false;
-  }); });
-  $('q-next').addEventListener('click', function(){
-    i++; if(i<Q.length){ render(); return; }
-    $('q-play').hidden=true; $('q-final').textContent=score;
-    $('q-msg').textContent = score===5 ? 'Perfect! You think like a true Ketsu-sui technician.' : score>=3 ? 'Great job! You know that new is not always better.' : 'Good start! Remember: repair first, replace last.';
-    var r=$('q-result'); r.hidden=false; r.classList.remove('swap'); void r.offsetWidth; r.classList.add('swap');
-    if(!reduce && score>=3) petals($('confetti'), 70, {burst:true});
-  });
-  $('q-again').addEventListener('click', function(){ i=0; score=0; $('q-result').hidden=true; $('q-play').hidden=false; render(); });
-  render();
 })();
 </script>
 </body>
