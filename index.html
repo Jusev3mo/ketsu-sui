@@ -28,6 +28,7 @@
   --seigaiha:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cg fill='%2314213d' stroke='%23b8955a' stroke-opacity='.28' stroke-width='1'%3E%3Cg id='s'%3E%3Ccircle r='20'/%3E%3Ccircle r='15'/%3E%3Ccircle r='10'/%3E%3Ccircle r='5'/%3E%3C/g%3E%3Cuse href='%23s' x='40' y='0'/%3E%3Cuse href='%23s' x='20' y='10'/%3E%3Cuse href='%23s' x='0' y='20'/%3E%3Cuse href='%23s' x='40' y='20'/%3E%3Cuse href='%23s' x='20' y='30'/%3E%3C/g%3E%3C/svg%3E");
 }
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--night)}
 body{font-family:var(--body);background:var(--washi);color:var(--ink);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img,svg{display:block;max-width:100%}
@@ -294,6 +295,55 @@ footer .motto{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,
 footer .motto em{font-style:normal;color:var(--sakura)}
 footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
 
+
+/* ---------- extra motion ---------- */
+.wave{position:absolute;top:-1px;left:0;right:0;height:46px;overflow:hidden;pointer-events:none;z-index:1}
+.wave i{position:absolute;top:0;left:0;height:100%;width:200%;background:var(--wc);-webkit-mask:var(--wm) repeat-x 0 0/50% 100%;mask:var(--wm) repeat-x 0 0/50% 100%;animation:waveMove 11s linear infinite}
+.wave i+i{opacity:.45;animation-duration:7s;animation-direction:reverse;height:70%}
+@keyframes waveMove{to{transform:translateX(-50%)}}
+:root{--wm:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 46' preserveAspectRatio='none'%3E%3Cpath d='M0 0h400v18c-50 22-100 22-150 6S150-2 100 14 50 30 0 18z'/%3E%3C/svg%3E")}
+.marquee.rev{background:var(--indigo);color:var(--gold-l);padding-block:10px}
+.marquee.rev .track{animation-direction:reverse;animation-duration:34s}
+.marquee.rev span{font-family:var(--jp);font-size:1.05rem;font-weight:600}
+.marquee.rev span::after{content:"\25C6";color:var(--sakura);font-size:.6rem;opacity:.9}
+.wd{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.wd>b{display:inline-block;font-weight:inherit;transform:translateY(105%) rotate(4deg);transition:transform 1s var(--spring)}
+.in .wd>b{transform:none}
+.stat{position:relative;overflow:hidden;isolation:isolate}
+.stat::before{content:"";position:absolute;inset:-60%;z-index:-2;background:conic-gradient(from 0deg,transparent 0 70%,rgba(224,197,142,.75) 82%,transparent 92%);animation:spin 5s linear infinite}
+.stat::after{content:"";position:absolute;inset:1.5px;border-radius:19px;background:var(--night);z-index:-1}
+.bat-bar{animation:charge 2.4s steps(1) infinite}
+.bat-bar.b2{animation-delay:.6s}.bat-bar.b3{animation-delay:1.2s}
+@keyframes charge{0%{opacity:.25}50%{opacity:1}}
+.p-cam .lens{transform-box:fill-box;transform-origin:center;animation:lens 3s ease-in-out infinite}
+@keyframes lens{50%{transform:scale(.55)}}
+.tilt{will-change:transform}
+.member:nth-child(1) .avatar{animation:bob 4s ease-in-out infinite}
+.member:nth-child(2) .avatar{animation:bob 4s .5s ease-in-out infinite}
+.member:nth-child(3) .avatar{animation:bob 4s 1s ease-in-out infinite}
+.member:nth-child(4) .avatar{animation:bob 4s 1.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.spark{fill:#fff6dc;opacity:0;transform-box:fill-box;transform-origin:center}
+.bowl-big.done .spark{animation:twinkle 1.8s ease-in-out infinite}
+.bowl-big.done .spark:nth-of-type(2n){animation-delay:.6s}.bowl-big.done .spark:nth-of-type(3n){animation-delay:1.1s}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1.2) rotate(45deg)}}
+.bg-kanji{position:absolute;font-family:var(--jp);font-weight:800;color:var(--indigo);opacity:.05;pointer-events:none;line-height:1;user-select:none;will-change:transform}
+#values{overflow:hidden}
+#values .wrap{position:relative;z-index:1}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:rip .65s var(--ease) forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+.q-btn{position:relative;overflow:hidden}
+.city{transition:transform .45s var(--spring),box-shadow .3s}
+.city:hover{transform:translateX(6px);box-shadow:inset 0 0 0 1px var(--sakura)}
+.flip .front .k{transition:transform .6s var(--spring)}
+.flip:hover .front .k{transform:scale(1.06) rotate(-2deg)}
+.feat.in .ic svg{animation:pop2 .8s .4s var(--spring) both}
+@keyframes pop2{from{transform:scale(0) rotate(-90deg)}}
+.benefit.in .check{animation:pop2 .7s .2s var(--spring) both}
+footer .motto em{display:inline-block;animation:glowPink 3s ease-in-out infinite}
+@keyframes glowPink{50%{text-shadow:0 0 18px rgba(231,155,176,.8)}}
+#fpetals{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(34px) scale(.98);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -307,6 +357,7 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
   .scrub .w{opacity:1}
+  .wd>b{transform:none}
 }
 </style>
 </head>
@@ -354,6 +405,12 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
   <span>Mottainai</span><span>Repair</span><span>Kaizen</span><span>Upgrade</span><span>Monozukuri</span><span>Reuse</span><span>Wa</span><span>Value it longer</span>
   <span>Mottainai</span><span>Repair</span><span>Kaizen</span><span>Upgrade</span><span>Monozukuri</span><span>Reuse</span><span>Wa</span><span>Value it longer</span>
 </div></div>
+<div class="marquee rev" aria-hidden="true"><div class="track">
+  <span lang="ja">もったいない</span><span lang="ja">改善</span><span lang="ja">ものづくり</span><span lang="ja">和</span><span lang="ja">金継ぎ</span><span lang="ja">針供養</span>
+  <span lang="ja">もったいない</span><span lang="ja">改善</span><span lang="ja">ものづくり</span><span lang="ja">和</span><span lang="ja">金継ぎ</span><span lang="ja">針供養</span>
+  <span lang="ja">もったいない</span><span lang="ja">改善</span><span lang="ja">ものづくり</span><span lang="ja">和</span><span lang="ja">金継ぎ</span><span lang="ja">針供養</span>
+  <span lang="ja">もったいない</span><span lang="ja">改善</span><span lang="ja">ものづくり</span><span lang="ja">和</span><span lang="ja">金継ぎ</span><span lang="ja">針供養</span>
+</div></div>
 
 <!-- PROBLEM -->
 <section id="problem" class="night">
@@ -387,6 +444,7 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
 
 <!-- SOLUTION -->
 <section id="solution" class="dark">
+  <div class="wave" style="--wc:var(--washi)" aria-hidden="true"><i></i><i></i></div>
   <div class="wrap">
     <div class="solution-top">
       <div>
@@ -405,7 +463,7 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
           <g class="part p-cam">
             <rect x="70" y="34" width="70" height="58" rx="12" fill="#1d2d52" stroke="#e79bb0" stroke-width="2"/>
             <circle cx="92" cy="58" r="12" fill="#0e172b" stroke="#f7f3ea" stroke-width="2"/>
-            <circle cx="92" cy="58" r="5" fill="#e79bb0"/>
+            <circle class="lens" cx="92" cy="58" r="5" fill="#e79bb0"/>
             <circle cx="122" cy="52" r="5" fill="#0e172b" stroke="#f7f3ea" stroke-width="1.5"/>
             <circle cx="122" cy="75" r="3" fill="#b8955a"/>
             <text class="label" x="105" y="20" text-anchor="middle" fill="#e79bb0" font-size="15" font-weight="600" font-family="Inter,sans-serif">Camera</text>
@@ -420,9 +478,9 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
             <rect x="70" y="214" width="140" height="130" rx="14" fill="#1d2d52" stroke="#e79bb0" stroke-width="2"/>
             <rect x="90" y="240" width="100" height="78" rx="8" fill="none" stroke="#f7f3ea" stroke-width="2"/>
             <rect x="130" y="233" width="20" height="7" rx="2" fill="#f7f3ea"/>
-            <rect x="98" y="292" width="84" height="18" rx="4" fill="#b8955a"/>
-            <rect x="98" y="270" width="84" height="18" rx="4" fill="#b8955a"/>
-            <rect x="98" y="248" width="84" height="18" rx="4" fill="#b8955a" opacity=".35"/>
+            <rect class="bat-bar" x="98" y="292" width="84" height="18" rx="4" fill="#b8955a"/>
+            <rect class="bat-bar b2" x="98" y="270" width="84" height="18" rx="4" fill="#b8955a"/>
+            <rect class="bat-bar b3" x="98" y="248" width="84" height="18" rx="4" fill="#b8955a"/>
             <text class="label" x="140" y="366" text-anchor="middle" fill="#e79bb0" font-size="15" font-weight="600" font-family="Inter,sans-serif">Battery</text>
           </g>
         </svg>
@@ -463,6 +521,12 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
         <path class="crack" d="M270 62l-12 34 22 26-18 36 16 30"/>
         <path class="crack" d="M280 122l40 10 22 30"/>
       </g>
+      <path class="spark" d="M128 98l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+      <path class="spark" d="M140 160l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/>
+      <path class="spark" d="M258 96l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+      <path class="spark" d="M280 122l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/>
+      <path class="spark" d="M262 158l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+      <path class="spark" d="M320 132l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
     </svg>
     <div>
       <p class="k-tag reveal" lang="ja">金継ぎ</p>
@@ -476,6 +540,8 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
 
 <!-- VALUES -->
 <section id="values">
+  <span class="bg-kanji" data-speed=".18" style="font-size:16rem;top:4%;right:-6%" aria-hidden="true">和</span>
+  <span class="bg-kanji" data-speed="-.12" style="font-size:11rem;bottom:2%;left:-8%" aria-hidden="true">改</span>
   <div class="wrap">
     <div class="center">
       <p class="eyebrow reveal">Japanese values</p>
@@ -505,6 +571,7 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
 
 <!-- COLOMBIA -->
 <section id="colombia" class="night">
+  <div class="wave" style="--wc:var(--washi)" aria-hidden="true"><i></i><i></i></div>
   <div class="wrap">
     <div class="center">
       <p class="eyebrow reveal">Coming next year</p>
@@ -569,6 +636,7 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
 
 <!-- QUIZ -->
 <section id="quiz" class="dark">
+  <div class="wave" style="--wc:var(--washi-2)" aria-hidden="true"><i></i><i></i></div>
   <div class="wrap">
     <div class="center">
       <p class="eyebrow reveal">Quiz</p>
@@ -620,6 +688,7 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
 </main>
 
 <footer>
+  <canvas id="fpetals" aria-hidden="true"></canvas>
   <div class="wrap">
     <img class="f-emblem" src="Ketsu-sui_Emblem.webp" width="92" height="92" alt="">
     <p class="motto"><em>Mottainai:</em> don't waste what still serves you.</p>
@@ -745,6 +814,69 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
     if (hasIO) new IntersectionObserver(function(en){ en[0].isIntersecting ? hp.start() : hp.stop(); }).observe(hero);
   }
 
+
+  /* ---------- extra motion ---------- */
+  document.querySelectorAll('h2.reveal').forEach(function(h){
+    var n = 0;
+    (function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(c){
+        if (c.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function(part){
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement('span'); w.className = 'wd';
+            var b = document.createElement('b'); b.textContent = part; b.style.transitionDelay = (n++ * 0.07) + 's';
+            w.appendChild(b); frag.appendChild(w);
+          });
+          c.parentNode.replaceChild(frag, c);
+        } else if (c.nodeType === 1 && c.tagName !== 'BR') walk(c);
+      });
+    })(h);
+  });
+
+  var heroWrap = document.querySelector('.hero .wrap');
+  var bgK = document.querySelectorAll('.bg-kanji'), bowlEl = $('bowl');
+  function motion(){
+    var y = scrollY, h = innerHeight;
+    if (y < h * 1.2) {
+      heroWrap.style.transform = 'translateY(' + (y * 0.32) + 'px) scale(' + (1 - Math.min(y / h, 1) * 0.12) + ')';
+      heroWrap.style.opacity = y > 4 ? Math.max(0, 1 - y / (h * 0.8)) : '';
+    }
+    bgK.forEach(function(k){ var r = k.parentNode.getBoundingClientRect(); k.style.transform = 'translateY(' + (r.top * +k.dataset.speed) + 'px) rotate(' + (r.top * 0.01) + 'deg)'; });
+    var br = bowlEl.getBoundingClientRect();
+    bowlEl.classList.toggle('done', br.top < h * 0.32 && br.bottom > 0);
+  }
+  if (!reduce) { addEventListener('scroll', motion, {passive:true}); motion(); }
+
+  if (!reduce) document.querySelectorAll('.feat, .member, .step, .stat').forEach(function(c){
+    c.classList.add('tilt');
+    c.addEventListener('pointermove', function(e){
+      if (e.pointerType === 'touch') return;
+      var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      c.style.transform = 'perspective(700px) rotateY(' + (x * 12) + 'deg) rotateX(' + (-y * 12) + 'deg) translateY(-4px)';
+    });
+    c.addEventListener('pointerleave', function(){ c.style.transform = ''; });
+  });
+
+  document.querySelectorAll('.btn, .q-btn, .toggle button').forEach(function(b){
+    b.addEventListener('pointerdown', function(e){
+      if (reduce) return;
+      var r = b.getBoundingClientRect(), s = Math.max(r.width, r.height), d = document.createElement('span');
+      d.className = 'ripple'; d.style.width = d.style.height = s + 'px';
+      d.style.left = (e.clientX - r.left - s / 2) + 'px'; d.style.top = (e.clientY - r.top - s / 2) + 'px';
+      if (getComputedStyle(b).position === 'static') b.style.position = 'relative';
+      b.style.overflow = 'hidden'; b.appendChild(d); setTimeout(function(){ d.remove(); }, 700);
+    });
+  });
+
+  if (!reduce && hasIO){
+    var fp = null, foot = document.querySelector('footer');
+    new IntersectionObserver(function(en){
+      if (en[0].isIntersecting){ if (!fp) fp = petals($('fpetals'), 16); else fp.start(); } else if (fp) fp.stop();
+    }).observe(foot);
+  }
+
   /* quiz */
   var Q = [
     {t:"Your phone's battery now lasts only half a day.", a:"keep", ok:"Repair it!", why:"The battery is the easiest part to change. Your phone will feel new again."},
@@ -765,7 +897,7 @@ footer .small{font-size:.76rem;opacity:.75;margin-top:8px}
     setBar(i);
   }
   btns.forEach(function(b){ b.addEventListener('click', function(){
-    var q=Q[i], ok=b.dataset.a===q.a; if(ok) score++;
+    var q=Q[i], ok=b.dataset.a===q.a; if(ok) score++; try{ if(navigator.vibrate) navigator.vibrate(ok?30:[40,60,40]); }catch(e){}
     btns.forEach(function(x){ x.disabled=true; if(x.dataset.a===q.a) x.classList.add('right'); });
     if(!ok) b.classList.add('wrong');
     $('q-fb-title').textContent=(ok?'Correct! ':'Not quite. ')+q.ok;
