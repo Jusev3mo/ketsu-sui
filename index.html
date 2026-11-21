@@ -319,6 +319,47 @@ footer .motto em{display:inline-block;animation:glowPink 3s ease-in-out infinite
 @keyframes glowPink{50%{text-shadow:0 0 18px rgba(231,155,176,.8)}}
 #fpetals{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 
+
+/* ---------- motion, round 3 ---------- */
+.eyebrow.reveal::before{width:0;transition:width .9s .35s var(--ease)}
+.eyebrow.reveal.in::before{width:22px}
+.nav ul a{position:relative;padding-block:4px}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;border-radius:2px;background:var(--gold-l);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--spring)}
+.nav ul a:hover::after,.nav ul a.on::after{transform:scaleX(1)}
+.nav ul a.on{color:var(--gold-l)}
+.step .ic{animation:flow 3.2s ease-in-out infinite}
+.step:nth-child(2) .ic{animation-delay:.8s}.step:nth-child(3) .ic{animation-delay:1.6s}.step:nth-child(4) .ic{animation-delay:2.4s}
+@keyframes flow{0%,30%,100%{box-shadow:0 0 0 0 rgba(231,155,176,0);background:rgba(231,155,176,.14)}12%{box-shadow:0 0 0 8px rgba(231,155,176,.18);background:rgba(231,155,176,.32)}}
+.step .n{transition:transform .8s var(--spring),color .8s}
+.step.in .n{animation:numIn 1s .3s var(--spring) both}
+@keyframes numIn{from{transform:translateY(-20px) scale(.4);opacity:0}}
+#story .big span+span{background:linear-gradient(90deg,var(--sakura-d),var(--gold),var(--sakura),var(--sakura-d));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent!important;animation:gradientMove 7s linear infinite}
+.motto-line em{background:linear-gradient(currentColor,currentColor) 0 100%/0 2px no-repeat;transition:background-size 1.3s .6s var(--ease);padding-bottom:2px}
+.motto-line.in em{background-size:100% 2px}
+.k-tag.reveal{clip-path:inset(0 100% 0 0);transform:none;transition:clip-path 1.6s var(--ease),opacity .3s}
+.k-tag.reveal.in{clip-path:inset(0 0 0 0)}
+.mini .jp{display:inline-block;animation:sway 5s ease-in-out infinite;transform-origin:50% 0}
+@keyframes sway{50%{transform:rotate(4deg)}}
+.flip.reveal.in:first-child > .in{animation:peek 1.3s 1.1s var(--ease)}
+@keyframes peek{40%{transform:rotateY(-28deg)}70%{transform:rotateY(6deg)}}
+.flip-hint{animation:hintPulse 2.4s ease-in-out infinite}
+@keyframes hintPulse{50%{opacity:.45}}
+.map-ping{fill:none;stroke:var(--sakura);stroke-width:1.4}
+.map-ping.t{stroke:var(--gold-l)}
+.faq details{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.faq.in details{opacity:1;transform:none}
+.faq.in details:nth-child(2){transition-delay:.08s}.faq.in details:nth-child(3){transition-delay:.16s}.faq.in details:nth-child(4){transition-delay:.24s}.faq.in details:nth-child(5){transition-delay:.32s}.faq.in details:nth-child(6){transition-delay:.4s}.faq.in details:nth-child(7){transition-delay:.48s}
+.faq summary{transition:padding-left .35s var(--spring),color .3s}
+.faq summary:hover{padding-left:6px;color:var(--sakura-d)}
+.faq details[open] summary{color:var(--sakura-d)}
+.toggle{animation:none}
+.cmp.us h3{animation:rise2 .7s var(--spring) both}
+@keyframes rise2{from{transform:translateY(14px);opacity:0}}
+.city .pin{transition:transform .4s var(--spring)}
+.city:hover .pin{transform:scale(1.4)}
+.lead.reveal{transition-duration:1.2s}
+footer .small{animation:fadeUp 1s both}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(34px) scale(.98);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -333,6 +374,9 @@ footer .motto em{display:inline-block;animation:glowPink 3s ease-in-out infinite
   .reveal{opacity:1;transform:none}
   .scrub .w{opacity:1}
   .wd>b{transform:none}
+  .faq details{opacity:1;transform:none}
+  .k-tag.reveal{clip-path:none}
+  .eyebrow.reveal::before{width:22px}
 }
 </style>
 </head>
@@ -817,6 +861,50 @@ footer .motto em{display:inline-block;animation:glowPink 3s ease-in-out infinite
     new IntersectionObserver(function(en){
       if (en[0].isIntersecting){ if (!fp) fp = petals($('fpetals'), 16); else fp.start(); } else if (fp) fp.stop();
     }).observe(foot);
+  }
+
+  /* ---------- motion, round 3 ---------- */
+  // split the Colombia quote into words too
+  document.querySelectorAll('blockquote.pull').forEach(function(q){
+    var n = 0;
+    Array.prototype.slice.call(q.childNodes).forEach(function(c){
+      if (c.nodeType !== 3) return;
+      var frag = document.createDocumentFragment();
+      c.textContent.split(/(\s+)/).forEach(function(part){
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        var w = document.createElement('span'); w.className = 'wd';
+        var b = document.createElement('b'); b.textContent = part; b.style.transitionDelay = (0.2 + n++ * 0.09) + 's';
+        w.appendChild(b); frag.appendChild(w);
+      });
+      c.parentNode.replaceChild(frag, c);
+    });
+  });
+
+  // pulsing rings on the map pins
+  if (!reduce) document.querySelectorAll('#route .city-dot, #route .tokyo').forEach(function(c, i){
+    var NS = 'http://www.w3.org/2000/svg', ring = document.createElementNS(NS, 'circle');
+    ring.setAttribute('cx', c.getAttribute('cx')); ring.setAttribute('cy', c.getAttribute('cy')); ring.setAttribute('r', '3');
+    ring.setAttribute('class', 'map-ping' + (c.classList.contains('tokyo') ? ' t' : ''));
+    [['r', '3', '15'], ['opacity', '.9', '0']].forEach(function(a){
+      var an = document.createElementNS(NS, 'animate');
+      an.setAttribute('attributeName', a[0]); an.setAttribute('from', a[1]); an.setAttribute('to', a[2]);
+      an.setAttribute('dur', '2.2s'); an.setAttribute('begin', (i * 0.5) + 's'); an.setAttribute('repeatCount', 'indefinite');
+      ring.appendChild(an);
+    });
+    c.parentNode.insertBefore(ring, c);
+  });
+
+  // highlight the nav link of the section on screen
+  var links = document.querySelectorAll('.nav ul a');
+  if (hasIO) {
+    var spy = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (!e.isIntersecting) return;
+        links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, {rootMargin: '-45% 0px -50% 0px'});
+    links.forEach(function(a){ var s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
   }
 
 })();
